@@ -1,33 +1,44 @@
 /*Crie um banco de dados para um e commerce, onde o sistema trabalhará com as
-informações dos produtos deste ecommerce.
-Crie uma tabela produtos e utilizando a habilidade de abstração e determine 5 atributos
-relevantes dos produtos para se trabalhar com o serviço deste ecommerce.
-Popule esta tabela com até 8 dados;
-Faça um select que retorne os produtos com o valor maior do que 500.
-Faça um select que retorne os produtos com o valor menor do que 500.
-Ao término atualize um dado desta tabela através de uma query de atualização.
-salve as querys para cada uma dos requisitos o exercício em um arquivo */
-create database db_Exerc2_Ecommerce;
-use db_Exerc2_Ecommerce;
+informações dos produtos deste ecommerce.*/
+create database db_exerc2_Ecommerce;
 
+/*Crie uma tabela produtos e utilizando a habilidade de abstração e determine 5 atributos
+relevantes dos produtos para se trabalhar com o serviço deste ecommerce.*/
+use db_exerc2_Ecommerce;
 create table tb_produtos
 (
-id bigint auto_increment,
+id bigint auto_increment not null,
 nome varchar(255) not null,
-descrição varchar(255) not null,
-quantidade bigint,
-valor double,
-primary key (id)
+descricao varchar(255),
+quantidade bigint not null,
+valor decimal(5,2) not null,
+
+primary key(id)
 );
 
-insert into tb_produtos (nome, descrição, quantidade, valor) values ("CookieCat Chocolate", "Bolacha chocolate recheada com sorvete de chocolate", 50000, 5.39 );
-insert into tb_produtos (nome, descrição, quantidade, valor) values ("CookieCat Morango", "Bolacha baunilha e recheada com sorvete morango", 40000, 5.39 );
-insert into tb_produtos (nome, descrição, quantidade, valor) values ("Cheeseburguer backpack", "Mochila com formato de hamburguer", 250, 89.75 );
-insert into tb_produtos (nome, descrição, quantidade, valor) values ("Donut", "Rosca confeitada", 1650, 4.8 );
-insert into tb_produtos (nome, descrição, quantidade, valor) values ("fish stew pizza", "Pizza recheada com peixe ", 3000, 25);
-insert into tb_produtos (nome, descrição, quantidade, valor) values ("Fries Bits", "Pequenas e crocantes batatas fritas ", 100, 8.45);
-insert into tb_produtos (nome, descrição, quantidade, valor) values ("G.U.Y.S", "Bonecos colecionáveis direto de Beach City", 1000, 10 );
-insert into tb_produtos (nome, descrição, quantidade, valor) values ("Guitarra Greg Universe", "Guitarra autografada por Greg Universe", 1, 7000 );
+/*Popule esta tabela com até 8 dados;*/
+insert into tb_produtos (nome, descricao, quantidade, valor) 
+values ("Camiseta Branca","Camiseta gola careca, manga curta, de algodão", 125, 109.90);
+insert into tb_produtos (nome, descricao, quantidade, valor) 
+values ("Camiseta Estampada","Camiseta gola careca, manga curta, de algodão", 75, 119.90);
+insert into tb_produtos (nome, descricao, quantidade, valor) 
+values ("Vestido curto","Vestido evasê, decote 'v', manga curta, de viscose", 50, 329.90);
+insert into tb_produtos (nome, descricao, quantidade, valor) 
+values ("Vestido longo","Vestido longo, alcinhas, de viscolycra", 25, 389.90);
+insert into tb_produtos (nome, descricao, quantidade, valor) 
+values ("Macacão","Macacão, manga curta, pernas longas, jeans", 30, 559.90);
+insert into tb_produtos (nome, descricao, quantidade, valor) 
+values ("Calça Jeans Premium","calça flare, lavada, com detalhes em desgaste, jeans", 35, 509.90 );
+insert into tb_produtos (nome, descricao, quantidade, valor) 
+values ("Sapato Couro Verniz","Sapatos estilo Brogui fechados, em couro e com detalhes em verniz", 24, 615.90);
+insert into tb_produtos (nome, descricao, quantidade, valor) 
+values ("Bolsa","Bolsa a  tira colo, detalhes e alças em dourado ", 10, 515.90);
 
-select * from tb_produtos where valor > 500;
-select * from tb_produtos where valor < 500;
+/*Faça um select que retorne os produtos com o valor maior do que 500.*/
+select * from tb_produtos where valor >500;
+
+/*Faça um select que retorne os produtos com o valor menor do que 500.*/
+select * from tb_produtos where valor <500;
+
+/*Ao término atualize um dado desta tabela através de uma query de atualização.*/
+update tb_produtos set valor = 499.0 where nome = "Calça Jeans Premium";
